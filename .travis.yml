@@ -1,10 +1,18 @@
 language: python
+python: 2.7
+env:
+  - TOX_ENV=pep8
+  - TOX_ENV=isort
+#  - TOXENV=py27
+#  - TOXENV=py33
+#  - TOXENV=py34
+#  - TOXENV=py35
 
 before_install:
-  - time pip install pep8
+  - time pip install tox
 
 script:
-  - pep8 --ignore E201,E202 --max-line-length=120 --exclude='migrations' .
+  - tox -e $TOX_ENV
 
 notifications:
   email:
