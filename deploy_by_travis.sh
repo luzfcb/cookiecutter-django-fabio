@@ -25,15 +25,15 @@ echo "{
 }
 
 
-#echo "
-#Host heroku.com
-#   StrictHostKeyChecking no
-#   CheckHostIP no
-#   UserKnownHostsFile=/dev/null
-#" >> ~/.ssh/config || { 
-#    echo >&2 -e "\nError on change .ssh/config"
-#    exit 1;
-#}
+echo "
+Host heroku.com
+   StrictHostKeyChecking no
+   CheckHostIP no
+   UserKnownHostsFile=/dev/null
+" >> ~/.ssh/config || { 
+    echo >&2 -e "\nError on change .ssh/config"
+    exit 1;
+}
 
 
 cookiecutter . --no-input || { 
