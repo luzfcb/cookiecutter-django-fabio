@@ -25,7 +25,7 @@ echo "{
 }
 
 
-echo "
+cat ~/.ssh/config | grep -c heroku.com || echo "
 Host heroku.com
    StrictHostKeyChecking no
    CheckHostIP no
