@@ -87,7 +87,7 @@ git commit -m "first test" > /dev/null
 # heroku apps:destroy --app ${DEMO_APP_NAME} -a ${DEMO_APP_NAME} --confirm ${DEMO_APP_NAME}
 
 
-heroku keys:clear
+# heroku keys:clear
 
 yes | heroku keys:add
 
@@ -120,4 +120,4 @@ git push heroku master
 heroku run python ${DEMO_APP_NAME}/manage.py collectstatic --noinput
 heroku run python ${DEMO_APP_NAME}/manage.py migrate --app ${DEMO_APP_NAME}
 
-
+heroku keys:clear
