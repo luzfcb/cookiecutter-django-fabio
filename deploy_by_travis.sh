@@ -60,7 +60,6 @@ def forwards(apps, schema_editor):
         email=env('DJANGO_ADMIN_EMAIL'),
         password=env('DJANGO_ADMIN_PASSWORD')
     )
-    user.save()
 
 
 class Migration(migrations.Migration):
