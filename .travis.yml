@@ -24,6 +24,7 @@ deploy:
   provider: heroku
   api_key: $HEROKU_API_KEY
   strategy: api
+  on: testdeploy2
   
 after_deploy:
   - popd
