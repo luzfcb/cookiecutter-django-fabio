@@ -14,9 +14,6 @@ notifications:
     on_success: change
     on_failure: always
 
-after_success:
-    - ./deploy_by_travis.sh
-
 before_deploy:
     - ./deploy_by_travis.sh
     
@@ -25,6 +22,7 @@ deploy:
   api_key: $HEROKU_API_KEY
   strategy: api
   on: testdeploy2
+#  buildpack: python
   
 after_deploy:
   - popd
