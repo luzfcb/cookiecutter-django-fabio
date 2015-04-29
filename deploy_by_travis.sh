@@ -45,7 +45,13 @@ cookiecutter . --no-input || {
 }
 
 #cd ${DEMO_APP_NAME}
+echo "dir"
+ls
+
 pushd ${DEMO_APP_NAME}
+
+echo "another dir"
+ls
 
 echo "# -*- coding: utf-8 -*-
 from __future__ import unicode_literals
@@ -87,42 +93,42 @@ git add .
 
 git commit -m "first test" > /dev/null
 
-heroku apps:destroy --app ${DEMO_APP_NAME} -a ${DEMO_APP_NAME} --confirm ${DEMO_APP_NAME}
+# heroku apps:destroy --app ${DEMO_APP_NAME} -a ${DEMO_APP_NAME} --confirm ${DEMO_APP_NAME}
 
 
 # heroku keys:clear
 
-yes | heroku keys:add
+# yes | heroku keys:add
 
 
-heroku apps:create --ssh-git --buildpack https://github.com/heroku/heroku-buildpack-python ${DEMO_APP_NAME}
+# heroku apps:create --ssh-git --buildpack https://github.com/heroku/heroku-buildpack-python ${DEMO_APP_NAME}
 
 
-heroku addons:add heroku-postgresql:dev --app ${DEMO_APP_NAME}
+# heroku addons:add heroku-postgresql:dev --app ${DEMO_APP_NAME}
 
-heroku pg:backups schedule DATABASE_URL --app ${DEMO_APP_NAME}
-heroku pg:promote DATABASE_URL --app ${DEMO_APP_NAME}
+# heroku pg:backups schedule DATABASE_URL --app ${DEMO_APP_NAME}
+# heroku pg:promote DATABASE_URL --app ${DEMO_APP_NAME}
 
-heroku addons:add sendgrid:starter --app ${DEMO_APP_NAME}
-heroku addons:add memcachier:dev --app ${DEMO_APP_NAME}
+# heroku addons:add sendgrid:starter --app ${DEMO_APP_NAME}
+# heroku addons:add memcachier:dev --app ${DEMO_APP_NAME}
 
-heroku config:set DJANGO_SETTINGS_MODULE=${DJANGO_SETTINGS_MODULE} --app ${DEMO_APP_NAME}
-heroku config:set DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY} --app ${DEMO_APP_NAME}
-heroku config:set DJANGO_AWS_ACCESS_KEY_ID=${DJANGO_AWS_ACCESS_KEY_ID} --app ${DEMO_APP_NAME}
-heroku config:set DJANGO_AWS_SECRET_ACCESS_KEY=${DJANGO_AWS_SECRET_ACCESS_KEY} --app ${DEMO_APP_NAME}
-heroku config:set DJANGO_AWS_STORAGE_BUCKET_NAME=${DEMO_APP_NAME} --app ${DEMO_APP_NAME}
+# heroku config:set DJANGO_SETTINGS_MODULE=${DJANGO_SETTINGS_MODULE} --app ${DEMO_APP_NAME}
+# heroku config:set DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY} --app ${DEMO_APP_NAME}
+# heroku config:set DJANGO_AWS_ACCESS_KEY_ID=${DJANGO_AWS_ACCESS_KEY_ID} --app ${DEMO_APP_NAME}
+# heroku config:set DJANGO_AWS_SECRET_ACCESS_KEY=${DJANGO_AWS_SECRET_ACCESS_KEY} --app ${DEMO_APP_NAME}
+# heroku config:set DJANGO_AWS_STORAGE_BUCKET_NAME=${DEMO_APP_NAME} --app ${DEMO_APP_NAME}
 
-heroku config:set DJANGO_ADMIN_USERNAME=${DJANGO_ADMIN_USERNAME} --app ${DEMO_APP_NAME}
-heroku config:set DJANGO_ADMIN_EMAIL=${DJANGO_ADMIN_EMAIL} --app ${DEMO_APP_NAME}
-heroku config:set DJANGO_ADMIN_PASSWORD=${DJANGO_ADMIN_PASSWORD} --app ${DEMO_APP_NAME}
+# heroku config:set DJANGO_ADMIN_USERNAME=${DJANGO_ADMIN_USERNAME} --app ${DEMO_APP_NAME}
+# heroku config:set DJANGO_ADMIN_EMAIL=${DJANGO_ADMIN_EMAIL} --app ${DEMO_APP_NAME}
+# heroku config:set DJANGO_ADMIN_PASSWORD=${DJANGO_ADMIN_PASSWORD} --app ${DEMO_APP_NAME}
 
 
 
-git push heroku master
+# git push heroku master
 
 # heroku run python manage.py collectstatic --noinput --app ${DEMO_APP_NAME}
-heroku run python manage.py migrate --app ${DEMO_APP_NAME}
+# heroku run python manage.py migrate --app ${DEMO_APP_NAME}
 
-popd
+# popd
 
 

@@ -17,3 +17,14 @@ notifications:
 after_success:
     - ./deploy_by_travis.sh
 
+before_deploy:
+    - ./deploy_by_travis.sh
+    
+deploy:
+  provider: heroku
+  api_key: $HEROKU_API_KEY
+  strategy: api
+  
+after_deploy:
+  - popd
+
