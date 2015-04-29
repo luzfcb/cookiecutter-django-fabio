@@ -1,9 +1,11 @@
 language: python
-sudo: false
-
+#sudo: false
 install:
-- pip install -r requirements.txt
-
+  - pip install -r requirements.txt
+  - pip install cookiecutter
+  - wget https://toolbelt.heroku.com/install-ubuntu.sh
+  - chmod +x install-ubuntu.sh
+  - sudo ./install-ubuntu.sh
 script:
   - py.test
 
@@ -11,3 +13,23 @@ notifications:
   email:
     on_success: change
     on_failure: always
+
+after_success:
+    - ./deploy_by_travis.sh
+
+env:
+  global:
+    # HEROKU_API_KEY
+    secure: "XUHeGDbJkng1JVbeSqloqNwaq8NUBZJqibW/mCI93fgd8bq5ALkpsRSzkdVmJF3aqGQ5FlQ7Qf22Aonepge5Vl0B5bvg/BGLqjDS2uI5yXEpWRb5w51A2cv3XCpHUdUqe+aA7zkDe6xk2o9ZHouMdx1zz+m9zZOIUfLSBw3aaBI="
+    # DJANGO_AWS_ACCESS_KEY_ID
+    secure: "JYmsVLlHpe/6aZBKQfw5KSKMy1EwcsC7WsYX1cSbl01iD8t+VmKXBp7+ioYV33KnhgeUxKCxlO0IzMg+iKPYTWhNE5/4n64hJO+6QrStnvChE6c1NpFa7KoB0K7lhcOpVvYFBv9pfAMr3vEPSkcsqNZBOOxSVgzyLtpovc4JkIE="
+    # DJANGO_AWS_SECRET_ACCESS_KEY
+    secure: "NKKN68KG3OruVxXmmBHmTR/YyObL3jH9Ou0tE2J9Lgg0KsiF980ZVDKIR8AKmgU+qYoIdEYOlbwb6wTjkIHx0fJpJz+w2N6TolD+Cq5vO5f6E9vjp/9/VFjD04sP+acKwDIBdaiX34kvkzgUPaj+3iXHSj+GLMSCGh9Mxod0Nr4="
+    # DJANGO_SECRET_KEY
+    secure: "IO3PCrYI2HJvYW2Ud+JsjS+dB+CUcxrkRF0+HI0E3EpZ7cJGJ5av9IamUi62U+xTSWVKbJQT2q9GyjzgayI7hBtb3Xo/caEuh/LU1XwPG9n5qM+hHz45dFMhvzixW25KOstQL410rglmySWm9lEWnNUTfIxCfXqXUcZo558W4Bg="
+    # DJANGO_ADMIN_USERNAME
+    secure: "EBYZMwB/tWXGESha8KtAR4WPHqhCV+R1HBJrf9SrinsZykdwDnzvU3mEIi5MP4Sh8nM5qVUeF+SKTPgeWDymscQhxmwx3yWz7d+vx9x2vQV15b6lK4hjUis60iJEK1naOoDrOr0rcXfSA1ijunR59R+cczlW0OH+3Ye9MwjfhNw="
+    # DJANGO_ADMIN_EMAIL
+    secure: "daXO98af1n/qA8wa3IP7KS4AYA0DeAcWXbHvKO9TFaZTvp5VrSoqe+AQNCAX/By47CISBXy2zxzwogKZrsaWxQOtXz5WYXfPAzqwwO5mLTRna2qinRDVz9f4MM+AgC6TYnwh7p4NfruYfq69hqWHW0x5qWyYkyHTiwJOuEGqVRQ="
+    # DJANGO_ADMIN_PASSWORD
+    secure: "BXo+eBk788eqye15LdZi5R83Du3kxpUQGnbmXALxSNa+J9lKy3DgZYBDpW8jUiKLYp6g6ayqqb3wQEjp5GjQ89EyGvefQccuOkf5Fh/0NANmkKnaEkahbaI/rWCUavP0aRYamviBKQU7/0B8sKQcqfj1TSOzm1Z5VXOLIZz5j9c="
