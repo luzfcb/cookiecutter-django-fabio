@@ -131,4 +131,5 @@ git commit -m "first test" > /dev/null
 
 # popd
 
+exit 0
 
