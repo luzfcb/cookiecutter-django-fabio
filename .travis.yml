@@ -20,7 +20,7 @@ before_deploy:
 deploy:
   provider: heroku
   api_key: $HEROKU_API_KEY
-  strategy: api
+  strategy: git
   on: testdeploy2
   buildpack: python
   
