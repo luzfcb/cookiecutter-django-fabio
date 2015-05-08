@@ -22,7 +22,7 @@ Pillow==2.8.1
 
 # For user registration, either via email or social
 # Well-built with regular release cycles!
-django-allauth==0.20.0
+-e git://github.com/pennersr/django-allauth.git#egg=django-allauth
 
 # For the persistence stores
 psycopg2==2.6
