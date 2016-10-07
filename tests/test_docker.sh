@@ -20,7 +20,6 @@ echo "django python manage.py test"
 #docker-compose -f dev.yml run django python manage.py test
 #check_and_exit_if_error
 
-echo "Start running django pending migration test..."
-echo "python manage.py makemigrations --dry-run --check"
+
 # return non-zero status code if there are migrations that have not been created
-docker-compose -f dev.yml run django python manage.py makemigrations --dry-run --check || { echo "ERROR: there were changes in the models, but migration listed above have not been created and are not saved in version control"; exit 1; }
+docker-compose -f dev.yml run django 'echo "Start running django pending migration test...\npython manage.py makemigrations --dry-run --check"; python manage.py makemigrations --dry-run --check' || { echo "ERROR: there were changes in the models, but migration listed above have not been created and are not saved in version control"; exit 1; }
