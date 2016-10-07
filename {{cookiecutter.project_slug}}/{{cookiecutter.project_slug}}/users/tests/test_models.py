@@ -17,3 +17,9 @@ class TestUser(TestCase):
             self.user.get_absolute_url(),
             '/users/testuser/'
         )
+
+    def test_force_fail(self):
+        self.assertEqual(
+            True,
+            False
+        )
