@@ -14,9 +14,13 @@ cd .cache/docker
 cookiecutter ../../ --no-input --overwrite-if-exists
 cd project_name
 
+echo "Start running django tests..."
+echo "django python manage.py test"
 # run the project's tests
 #docker-compose -f dev.yml run django python manage.py test
 #check_and_exit_if_error
 
+echo "Start running django pending migration test..."
+echo "python manage.py makemigrations --dry-run --check"
 # return non-zero status code if there are migrations that have not been created
 docker-compose -f dev.yml run django python manage.py makemigrations --dry-run --check || { echo "ERROR: there were changes in the models, but migration listed above have not been created and are not saved in version control"; exit 1; }
