@@ -24,8 +24,8 @@ cd project_name
 
 # run the project's tests
 docker-compose -f dev.yml run django python manage.py test
-check_and_exit_if_error
+#check_and_exit_if_error
 
 # return non-zero status code if there are migrations that have not been created
-docker-compose -f dev.yml run django python manage.py makemigrations --dry-run --check
+#docker-compose -f dev.yml run django python manage.py makemigrations --dry-run --check
 #check_and_exit_if_error
